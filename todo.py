@@ -49,6 +49,19 @@ class TodoList:
             self.save_tasks()
         else:
             print("Índice da tarefa inválido.")
+    
+    def edit_task(self, index):
+        if 0 <= index < len(self.tasks):
+            print("Edição da Tarefa:")
+            title = input("Novo Título da tarefa: ")
+            due_date = input("Novo Prazo da tarefa (YYYY-MM-DD): ")
+            priority = input("Nova Prioridade (alta, média, baixa): ")
+            self.tasks[index].title = title
+            self.tasks[index].due_date = due_date
+            self.tasks[index].priority = priority
+            self.save_tasks()
+        else:
+            print("Índice da tarefa inválido.")          
 
     def list_pending_tasks(self):
         return [task for task in self.tasks if not task.completed]
